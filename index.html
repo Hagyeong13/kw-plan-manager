@@ -42,7 +42,16 @@
             <div class="flex-grow-1 bg-light rounded-2 p-2 me-1 w-50">
                 <h3>Plans</h3>
                 <div id="plan-list">
-                    <div class="plan bg-light p-1 rounded-2 ps-2">Sample plan</div>
+                    <div class="plan bg-light p-1 rounded-2 ps-2 d-flex
+                    align-items-center">
+                        <span class="me-auto">Sample Plan</span>
+                        <button class="btn btn-sm btn-success me-1">
+                            <i class="bi bi-check"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger">
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="flex-grow-1 bg-light rounded-2 p-2 w-50">
@@ -60,22 +69,18 @@
         let addBtn = document.querySelector("#add-btn");
         
         addBtn.addEventListener("click", () => {
-            console.log("Clicked!");
+        
             // 1. Read the text in #plan-input.
             let input = document.querySelector("#plan-input");
-            let plan = input.value;
 
-            if (!plan.length) return;
+            let text = input.value;
+            if (!text.length) return;
             
-            // 2. Append the text to #plan-list.
-            let newPlan = document.createElement("div");
-            newPlan.classList.add("plan", "bg-light", "p-1", "rounded-2", "ps-2");
-            newPlan.textContent = plan;
+            // 2. Create a new Plan object
+            // 3. Append the new Plan object to plans
+            // 4. Create a new plan item and attach it to #plan-list
 
-            let planList = document.querySelector("#plan-list");
-            planList.appendChild(newPlan);
-
-            // 3. Clear #plan-input.
+            // 5. Clear #plan-input
             input.value="";
         });
     </script>
