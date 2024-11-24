@@ -66,6 +66,39 @@
 
     <script>
         /* JS Code */
+        const Type={
+            Todo: 1,
+            Done: 2
+        };
+
+        function addToList(plan) {
+            let div = document.createElement("div");
+            div.className = "plan bg-light p-1 rounded-2 ps-2 d-flex align-itemscenter";
+
+            let span = document.createElement("span");
+            span.classList.add("me-auto");
+            span.textContent = plan.text;
+            div.appendChild(span);
+
+            if (plan.type === Type.Todo) {
+                let buttonDone = document.createElement("button");
+                buttonDone.classList.add("btn", "btn-sm", "btn-success", "me-1");
+                buttonDone.innerHTML = '<i class="bi bi-check"></i>';
+                div.appendChild(buttonDone);
+            }
+            
+            let buttonRemove = document.createElement("button");
+            buttonRemove.classList.add("btn", "btn-sm", "btn-danger");
+            let iElem = document.createElement("i");
+            iElem.classList.add("bi", "bi-x");
+            buttonRemove.appendChild(iElem);
+            div.appendChild(buttonRemove);
+
+            let list = document.querySelector(plan.type === Type.Todo ? "#plan-list" :
+                "#done-list");
+            list.appendChild(div);
+        }
+
         let addBtn = document.querySelector("#add-btn");
         
         addBtn.addEventListener("click", () => {
@@ -77,9 +110,14 @@
             if (!text.length) return;
             
             // 2. Create a new Plan object
+            let plan = {
+                text: text,
+                type: Type.Todo
+            };
+
             // 3. Append the new Plan object to plans
             // 4. Create a new plan item and attach it to #plan-list
-
+            addToList(plan);
             // 5. Clear #plan-input
             input.value="";
         });
