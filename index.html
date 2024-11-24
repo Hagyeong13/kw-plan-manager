@@ -86,6 +86,13 @@
                 buttonDone.classList.add("btn", "btn-sm", "btn-success", "me-1");
                 buttonDone.innerHTML = '<i class="bi bi-check"></i>';
                 div.appendChild(buttonDone);
+
+                buttonDone.addEventListener("click",()=>{
+                    plan.type=Type.Done;
+                    div.remove();
+                    savePlans();
+                    addToList(plan);
+                })
             }
             
             let buttonRemove = document.createElement("button");
