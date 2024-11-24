@@ -94,6 +94,10 @@
             buttonRemove.appendChild(iElem);
             div.appendChild(buttonRemove);
 
+            buttonRemove.addEventListener("click",()=>{
+                div.remove();
+            });
+
             let list = document.querySelector(plan.type === Type.Todo ? "#plan-list" :
                 "#done-list");
             list.appendChild(div);
