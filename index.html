@@ -91,6 +91,18 @@
             span.textContent = plan.text;
             div.appendChild(span);
 
+            switch (plan.priority) {
+                case "High":
+                    div.style.backgroundColor = "#FBB4AE";
+                    break;
+                case "Medium":
+                    div.style.backgroundColor = "#FFFFCC";
+                    break;
+                case "Low":
+                    div.style.backgroundColor = "#CCEBC5";
+                    break;
+            }
+    
             if (plan.type === Type.Todo) {
                 let buttonDone = document.createElement("button");
                 buttonDone.classList.add("btn", "btn-sm", "btn-success", "me-1");
